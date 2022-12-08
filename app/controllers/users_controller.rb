@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
-        session[:user_id] = user.user_id
+        session[:user_id] = user.id
 
         render json: user
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     end
 
     private
-    
+
     def record_invalid(invalid)
         render json: invalid.record.errors.full_messages, status: :unprocessable_entity
     end
